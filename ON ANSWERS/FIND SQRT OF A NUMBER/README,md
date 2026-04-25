@@ -1,0 +1,171 @@
+# 📌 Floor of Square Root using Binary Search (C++)
+
+## 🔍 Problem Statement
+
+Given a non-negative integer `n`, compute the **floor value of its square root**.
+
+👉 The **floor of √n** is the greatest integer `x` such that:
+
+```
+x² ≤ n
+```
+
+---
+
+## 📥 Example
+
+```cpp
+Input:  n = 28
+Output: 5
+```
+
+✔ Explanation:
+
+* √28 ≈ 5.29
+* Floor value = **5**
+
+---
+
+## 🚀 Approach Used (Binary Search)
+
+### 🧠 Key Idea:
+
+Instead of checking every number from `1` to `n`, we:
+
+* Use **binary search on answer space**
+* Search for the largest number whose square is ≤ `n`
+
+---
+
+## 📐 Mathematical Insight
+
+x^2 \leq n
+
+👉 We are finding the maximum `x` that satisfies this condition.
+
+---
+
+## 🔄 Algorithm Steps
+
+1. Initialize:
+
+   * `low = 1`, `high = n`
+
+2. While `low <= high`:
+
+   * Find `mid`
+   * Compute `mid * mid`
+
+3. If `mid² ≤ n`:
+
+   * Store it as a possible answer
+   * Move right → `low = mid + 1`
+
+4. Else:
+
+   * Move left → `high = mid - 1`
+
+5. Return `high`
+   👉 (last valid value where `mid² ≤ n`)
+
+---
+
+## ⚙️ Code Structure
+
+### Class:
+
+```cpp
+class Solution {
+public:
+    int floorSqrt(int n);
+};
+```
+
+### Main Function:
+
+* Takes input value
+* Calls function
+* Prints result
+
+---
+
+## 📈 Complexity Analysis
+
+| Type  | Complexity |
+| ----- | ---------- |
+| Time  | O(log n)   |
+| Space | O(1)       |
+
+---
+
+## 💡 Example Walkthrough
+
+```cpp
+n = 28
+
+low = 1, high = 28
+
+mid = 14 → 14² = 196 > 28 → move left
+mid = 7  → 49 > 28 → move left
+mid = 3  → 9 ≤ 28 → move right
+mid = 5  → 25 ≤ 28 → move right
+mid = 6  → 36 > 28 → move left
+
+Final answer = 5
+```
+
+---
+
+## 🛠️ How to Run
+
+### Compile:
+
+```bash
+g++ code.cpp -o code
+```
+
+### Run:
+
+* PowerShell:
+
+  ```
+  .\code
+  ```
+* Linux/Mac:
+
+  ```
+  ./code
+  ```
+
+---
+
+## 📚 Key Concepts Used
+
+* Binary Search on Answer
+* Overflow Handling (`long long`)
+* Mathematical Optimization
+
+---
+
+## ⚠️ Important Notes
+
+* Use `long long` for `mid * mid` to avoid overflow
+* Works efficiently even for large values of `n`
+
+---
+
+## 🎯 Summary
+
+* Avoid brute force (O(n))
+* Use binary search for efficient computation
+* Always track the **last valid answer**
+
+---
+
+## ✅ Output
+
+```cpp
+The floor of square root of 28 is: 5
+```
+
+---
